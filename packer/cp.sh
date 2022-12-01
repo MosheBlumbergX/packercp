@@ -15,7 +15,6 @@ sudo apt-get -y update
 sudo sudo apt -y install default-jdk
 sudo apt-get install -y confluent-platform
 sudo apt-get install -y confluent-security
-echo `date` >> /tmp/moshename.txt
 sleep 10
 
 
