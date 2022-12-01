@@ -11,7 +11,7 @@ This packer script will create AMI which will:
 * Install Java 
 * Get repo key 
 * Add key
-* Apt install Confluent 7.3 (currently hard coded but can be determined)
+* Apt install Confluent 7.3 (currently used as a var in the cp.sh script)
   
 
 ```
@@ -48,6 +48,10 @@ kafka-topics --bootstrap-server localhost:9092 --create --partitions 3 --replica
 Created topic srctopic.
 ```
 
+You can also use the systemd
+```
+sudo systemctl start confluent-server 
+```
 
 This is a out of the box, single broker single zookeeper setup, which is not a good idea, this should be scaled up and configured.  
 

@@ -26,7 +26,8 @@
       "ssh_username": "{{user `ssh_username`}}",
       "subnet_id": "",
       "tags": {
-        "ami": "{{user `eu-west-2_name`}}"
+        "ami": "{{user `eu-west-2_name`}}",
+        "Name": "{{user `name`}}"
       },
       "type": "amazon-ebs",
       "vpc_id": ""
