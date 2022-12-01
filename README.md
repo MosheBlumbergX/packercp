@@ -7,7 +7,7 @@ This is a method to build AWS AMI based on `ami-0be590cb7a2969726` :
 * 18.04	amd64	hvm-ssd 
 
 ```
-packer build ubuntu-cp-scripted.json
+packer build packer/ubuntu-cp-scripted.json
 ```
 
 Or: 
