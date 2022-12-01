@@ -1,10 +1,18 @@
 # Packer for CP 
 
 This is a method to build AWS AMI based on `ami-0be590cb7a2969726` :
-* Provided by Amazon AWS	
+* Base image provided by Amazon AWS	market place (which indicated the security level)
 * eu-west-2	
 * bionic	
 * 18.04	amd64	hvm-ssd 
+
+This packer script will create AMI which will:  
+* Update/Upgrade OS 
+* Install Java 
+* Get repo key 
+* Add key
+* Apt install Confluent 7.3 (currently hard coded but can be determined)
+  
 
 ```
 packer build packer/ubuntu-cp-scripted.json
