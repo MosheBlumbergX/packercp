@@ -1,0 +1,54 @@
+{
+"variables": {
+  "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+  "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+  "eu-west-2_ami": "ami-0be590cb7a2969726",
+  "eu-west-2_name": "moshe-packer-cp",
+  "name": "moshe-packer",
+  "ssh_username": "ubuntu"
+},
+  "builders": [
+    {
+      "access_key": "{{user `aws_access_key`}}",
+      "ami_description": "{{user `eu-west-2_name`}} AMI",
+      "ami_name": "{{user `eu-west-2_name`}} {{timestamp}}",
+      "associate_public_ip_address": true,
+      "instance_type": "t2.micro",
+      "name": "{{user `eu-west-2_name`}}",
+      "region": "eu-west-2",
+      "run_tags": {
+        "ami-create": "{{user `eu-west-2_name`}}"
+      },
+      "secret_key": "{{user `aws_secret_key`}}",
+      "source_ami": "{{user `eu-west-2_ami`}}",
+      "ssh_interface": "public_ip",
+      "ssh_timeout": "5m",
+      "ssh_username": "{{user `ssh_username`}}",
+      "subnet_id": "",
+      "tags": {
+        "ami": "{{user `eu-west-2_name`}}"
+      },
+      "type": "amazon-ebs",
+      "vpc_id": ""
+    }
+  ],
+  "provisioners": [
+    {
+      "destination": "/tmp/cp.sh",
+      "source": "cp.sh",
+      "type": "file"
+    },
+    {
+      "execute_command": "echo 'packer' | sudo -S sh -c '{{ .Vars }} {{ .Path }}'",
+      "type": "shell",
+      "inline": [
+          "cd /tmp",
+          "chmod +x cp.sh",
+          "ls -alh /tmp",
+          "sudo ./cp.sh",
+          "sleep 10"
+        ]
+      }
+      ]
+    }
+
