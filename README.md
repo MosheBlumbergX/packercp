@@ -38,3 +38,12 @@ sudo kafka-server-start -daemon /etc/kafka/server.properties
 kafka-topics --bootstrap-server localhost:9092 --create --partitions 3 --replication-factor 1  --topic srctopic 
 Created topic srctopic.
 ```
+
+
+This is a out of the box, single broker single zookeeper setup, which is not a good idea, this should be scaled up and configured.  
+
+Consider adding:  
+* Jolokia
+* Prometheus
+* Log Directory
+* All Ansible setup 
