@@ -15,7 +15,8 @@ This packer script will create AMI which will:
   
 
 ```
-packer build packer/ubuntu-cp-scripted.json
+cd packer
+packer build ubuntu-cp-scripted.json
 ```
 
 Or: 
